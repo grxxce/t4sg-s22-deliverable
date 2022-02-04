@@ -21,7 +21,10 @@ import AddTagModal from "./Modals/AddTagModal";
 */
 export const ManagementContainerQuery = `
 query MyQuery {
-  __typename 
+  category {
+    id
+    name
+  } 
 }
 `;
 // END TODO
@@ -46,16 +49,6 @@ const CaseManagementContainer: React.FC = (props) => {
   return (
     <>
       <h5 className="title">Home Page</h5>
-      <Grid container spacing={3}>
-        {/*
-          FEATURE 1 TODO:
-          Use the data from the result of the query to render 
-          a CaseCategory for every category in the response.
-          Remember, the response is stored in the "data" variable!
-        */}
-
-        {/* END TODO */}
-      </Grid>
 
       <AddCaseModal
         onClose={() => setAddCaseModalOpen(false)}
@@ -75,9 +68,10 @@ const CaseManagementContainer: React.FC = (props) => {
       <Container
         style={{
           width: "100%",
-          borderStyle: "solid",
           padding: "0.75rem",
-          marginTop: "0.75rem",
+          marginBottom: "0.75rem",
+          display: "flex",
+          justifyContent: "space-between"
         }}
       >
         <Button variant="dark" onClick={() => setAddCategoryModalOpen(true)}>
@@ -96,6 +90,23 @@ const CaseManagementContainer: React.FC = (props) => {
           Edit Case
         </Button>
       </Container>
+      
+      <Grid container spacing={3}>
+        {/*
+          FEATURE 1 TODO:
+          Use the data from the result of the query to render 
+          a CaseCategory for every category in the response.
+          Remember, the response is stored in the "data" variable!
+        */}
+
+        {data
+          ? data.category.map((category: ManagementCategory, index: number) => {
+            return <CaseCategory key={index} category_id={category.id}/>;
+          })
+          : "Something went wrong"}
+
+        {/* END TODO */}
+      </Grid>
     </>
   );
 };
