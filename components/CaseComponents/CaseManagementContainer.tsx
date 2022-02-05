@@ -9,6 +9,7 @@ import AddCaseModal from "./Modals/AddCaseModal";
 import { useQuery } from "urql";
 import AddCategoryModal from "./Modals/AddCategoryModal";
 import AddTagModal from "./Modals/AddTagModal";
+import DeleteCaseModal from "./Modals/DeleteCaseModal";
 
 /* 
   FEATURE 1 TODO:
@@ -25,6 +26,10 @@ query MyQuery {
     id
     name
   } 
+  cases { 
+    id
+    name
+  }
 }
 `;
 // END TODO
@@ -34,12 +39,20 @@ export type ManagementCategory = {
   name: string;
 };
 
+export type ManagementCases = {
+  id: number;
+  name: string;
+};
+
 const CaseManagementContainer: React.FC = (props) => {
   const [addCaseModalOpen, setAddCaseModalOpen] =
     React.useState<boolean>(false);
   const [addCategoryModalOpen, setAddCategoryModalOpen] =
     React.useState<boolean>(false);
-  const [addTagModalOpen, setAddTagModalOpen] = React.useState<boolean>(false);
+  const [addTagModalOpen, setAddTagModalOpen] = 
+    React.useState<boolean>(false);
+  const [addDeleteCaseModalOpen, setDeleteCaseModalOpen] = 
+    React.useState<boolean>(false);
 
   /* NOTE: This uses */
   const [{ data, fetching, error }, executeQuery] = useQuery({
@@ -65,6 +78,11 @@ const CaseManagementContainer: React.FC = (props) => {
         open={addTagModalOpen}
       />
 
+      <DeleteCaseModal
+        onClose={() => setDeleteCaseModalOpen(false)}
+        open={addDeleteCaseModalOpen}
+      />
+
       <Container
         style={{
           width: "100%",
@@ -83,12 +101,12 @@ const CaseManagementContainer: React.FC = (props) => {
         <Button variant="dark" onClick={() => setAddCaseModalOpen(true)}>
           Add Case
         </Button>
-        <Button variant="dark" onClick={() => "redirect"}>
+        <Button variant="dark" onClick={() => setDeleteCaseModalOpen(true)}>
           Delete Case
         </Button>
-        <Button variant="dark" onClick={() => "redirect"}>
+        {/* <Button variant="dark" onClick={() => "redirect"}>
           Edit Case
-        </Button>
+        </Button> */}
       </Container>
       
       <Grid container spacing={3}>

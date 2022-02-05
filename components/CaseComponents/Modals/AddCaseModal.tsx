@@ -65,7 +65,6 @@ const AddCaseModal: React.FC<AddCaseModalProps> = (props) => {
   const [{ data, fetching, error }, executeQuery] = useQuery({
     query: ManagementContainerQuery,
   });
-
   const [result, executeMutation] = useMutation(InsertCaseMutation);
 
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Container,
+  Button,
   Row,
   Col,
   Card,
@@ -8,9 +9,10 @@ import {
   CardSubtitle,
   CardText,
 } from "reactstrap";
-import { useQuery } from "urql";
 import { Box } from "@material-ui/core";
+import { useMutation, useQuery } from "urql";
 import CloseIcon from "@material-ui/icons/Close";
+import DeleteCaseModal from "./Modals/DeleteCaseModal";
 
 type CaseCardProps = {
   data: CaseData;
@@ -29,37 +31,49 @@ export type CaseData = {
   cases_tags?: [TagData];
 };
 
+const DeleteCaseMutation = `
+mutation DeleteCaseMutation($id: bigint!) {
+  delete_cases(where: {id: {_eq: $id}}) {
+    affected_rows
+  }
+} 
+`;
+
 const CaseCard: React.FC<CaseCardProps> = (props) => {
   const caseData = props.data;
+  const [result, executeMutation] = useMutation(DeleteCaseMutation);
+  const [addDeleteCaseModalOpen, setDeleteCaseModalOpen] = 
+    React.useState<boolean>(false);
 
   return (
-    <Container>
-      <div style={{ width: "100%", padding: "5px" }}>
-        <Card body style={{ backgroundColor: "#e4ebf5" }}>
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            width="100%"
-          >
-            <CardTitle tag="h3">{caseData.name}</CardTitle>
-            <CloseIcon />
-          </Box>
+    <>
+      <DeleteCaseModal
+          onClose={() => setDeleteCaseModalOpen(false)}
+          open={addDeleteCaseModalOpen}
+      />
+      <Container>
+        <div style={{ width: "100%", padding: "5px" }}>
+          <Card body style={{ backgroundColor: "#e4ebf5" }}>
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              width="100%"
+            >
+              <CardTitle tag="h3">{caseData.name}</CardTitle>
+              <Button variant="outlined" onClick={() => setDeleteCaseModalOpen(true)}>
+                X
+              </Button>
+            </Box>
 
-          <CardSubtitle tag="h6" className="mb-2 text-muted">
-            {caseData.status}
-          </CardSubtitle>
-          <CardText>{caseData.description}</CardText>
-          {/*
-            ALTERNATE FEATURE 1 TODO:
-            Use the data on tags found in props to render out all
-            of the tags associated with every case.
-          */}
-
-          {/* END TODO */}
-        </Card>
-      </div>
-    </Container>
+            <CardSubtitle tag="h6" className="mb-2 text-muted">
+              {caseData.status}
+            </CardSubtitle>
+            <CardText>{caseData.description}</CardText>
+          </Card>
+        </div>
+      </Container>
+    </>
   );
 };
 export default CaseCard;
