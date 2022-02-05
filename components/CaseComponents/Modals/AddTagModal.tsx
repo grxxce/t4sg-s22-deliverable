@@ -100,6 +100,7 @@ const AddTagModal: React.FC<AddTagModalProps> = (props) => {
                 to render a MenuItem with cases.id as the value, and 
                 cases.name as the text.
                 */}
+
                 {/* END TODO */}
               </Select>
             </FormControl>

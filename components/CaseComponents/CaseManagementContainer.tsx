@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import { Container } from "reactstrap";
 import Grid, { GridSpacing } from "@material-ui/core/Grid";
 import "../../styles/casemanagement.module.css";
@@ -60,8 +61,9 @@ const CaseManagementContainer: React.FC = (props) => {
   });
 
   return (
-    <>
-      <h5 className="title">Home Page</h5>
+    <div className="padding">
+      <h1 className="subtitle">Introducing . . .</h1>
+      <h5 className="title">Case 🧳 Track!</h5>
 
       <AddCaseModal
         onClose={() => setAddCaseModalOpen(false)}
@@ -87,23 +89,25 @@ const CaseManagementContainer: React.FC = (props) => {
         style={{
           width: "100%",
           padding: "0.75rem",
-          marginBottom: "0.75rem",
+          marginBottom: "2 rem",
           display: "flex",
-          justifyContent: "space-between"
+          justifyContent: "space-around"
         }}
       >
-        <Button variant="dark" onClick={() => setAddCategoryModalOpen(true)}>
-          Add Category
-        </Button>
-        <Button variant="dark" onClick={() => setAddTagModalOpen(true)}>
-          Add Tag To A Case
-        </Button>
-        <Button variant="dark" onClick={() => setAddCaseModalOpen(true)}>
-          Add Case
-        </Button>
-        <Button variant="dark" onClick={() => setDeleteCaseModalOpen(true)}>
-          Delete Case
-        </Button>
+        <ButtonGroup size="large" variant="outline">
+          <Button variant="contained" onClick={() => setAddCategoryModalOpen(true)}>
+            + Category 🗂
+          </Button>
+          <Button variant="contained" onClick={() => setAddTagModalOpen(true)}>
+            Tag a Case 🏷 
+          </Button>
+          <Button variant="contained" onClick={() => setAddCaseModalOpen(true)}>
+            + Case 🧳
+          </Button>
+          <Button variant="contained" onClick={() => setDeleteCaseModalOpen(true)}>
+            ❌ Case
+          </Button>
+        </ButtonGroup>
         {/* <Button variant="dark" onClick={() => "redirect"}>
           Edit Case
         </Button> */}
@@ -125,7 +129,7 @@ const CaseManagementContainer: React.FC = (props) => {
 
         {/* END TODO */}
       </Grid>
-    </>
+    </div>
   );
 };
 export default CaseManagementContainer;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+import Grid, { GridSpacing } from "@material-ui/core/Grid";
 import { useQuery } from "urql";
 import CaseCard, { CaseData } from "./CaseCard";
 
@@ -20,13 +21,13 @@ type CaseCategoryData = {
 const CategoryQuery = `
   query CategoryQuery($category_id: bigint = "") {
     category(where: {id: {_eq: $category_id}}, limit: 1) {
+      name
       cases {
         name
         status
         description
         id
       }
-      name
     }
 }
 `;
@@ -42,32 +43,34 @@ const CaseCategory = (props: CaseCategoryProps) => {
   const category: CaseCategoryData | null = data ? data?.category[0] : null;
 
   return (
-    <Container
-      style={{ width: "100%", borderStyle: "solid", padding: "0.75rem" }}
-    >
-      <Row>
-        <Col>
-          {category ? (
-            <h3 className="font-weight-normal t4sg-color text-center">
-              {category.name}
-            </h3>
-          ) : (
-            <h3 className="font-weight-normal t4sg-color text-center">
-              Something went wrong
-            </h3>
-          )}
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          {category
-            ? category.cases.map((c: CaseData, index: number) => {
-                return <CaseCard key={index} data={c} />;
-              })
-            : "Something went wrong"}
-        </Col>
-      </Row>
-    </Container>
+    <Grid item xs={4}>
+      <Container
+        style={{ width: "100%", borderColor:"#ECFBF3", backgroundColor:"#ECFBF3", borderStyle: "solid", padding: "0.75rem" }}
+      >
+        <Row>
+          <Col>
+            {category ? (
+              <h3 className="t4sg-color text-center">
+                {category.name}
+              </h3>
+            ) : (
+              <h3 className="t4sg-color text-center">
+                Something went wrong
+              </h3>
+            )}
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {category
+              ? category.cases.map((c: CaseData, index: number) => {
+                  return <CaseCard key={index} data={c} />;
+                })
+              : "Something went wrong"}
+          </Col>
+        </Row>
+      </Container>
+    </Grid>
   );
 };
 

@@ -66,7 +66,7 @@ const DeleteCaseModal: React.FC<DeleteCaseModalProps> = (props) => {
       <Box>
         {data ? (
           <FormControl fullWidth>
-            <InputLabel id="case-select-label">Case ID</InputLabel>
+            <InputLabel id="case-select-label">Case Name</InputLabel>
             <Select
               labelId="case-select-label"
               fullWidth

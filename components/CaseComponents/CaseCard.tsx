@@ -60,16 +60,31 @@ const CaseCard: React.FC<CaseCardProps> = (props) => {
               alignItems="center"
               width="100%"
             >
+              {/* Additional feature: delete with x */}
               <CardTitle tag="h3">{caseData.name}</CardTitle>
-              <Button variant="outlined" onClick={() => setDeleteCaseModalOpen(true)}>
-                X
+              <Button onClick={() => setDeleteCaseModalOpen(true)}>
+                ❌
               </Button>
             </Box>
-
-            <CardSubtitle tag="h6" className="mb-2 text-muted">
-              {caseData.status}
+            <CardSubtitle tag="h5" className="mb-2 text-muted">
+              ⏳ {caseData.status}
             </CardSubtitle>
-            <CardText>{caseData.description}</CardText>
+            <CardText> ✏️ {caseData.description}</CardText>
+            {/*
+            ALTERNATE FEATURE 1 TODO:
+            Use the data on tags found in props to render out all
+            of the tags associated with every case.
+            */}
+            {/* {TagData ? (
+              <h3 className="font-weight-normal t4sg-color text-center">
+                {TagData.name}
+              </h3>
+            ) : (
+              <h3 className="font-weight-normal t4sg-color text-center">
+                Something went wrong
+              </h3>
+            )} */}
+            {/* END TODO */}
           </Card>
         </div>
       </Container>
