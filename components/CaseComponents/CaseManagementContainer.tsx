@@ -94,18 +94,18 @@ const CaseManagementContainer: React.FC = (props) => {
           justifyContent: "space-around"
         }}
       >
-        <ButtonGroup size="large" variant="outline">
+        <ButtonGroup>
           <Button variant="light" onClick={() => setAddCategoryModalOpen(true)}>
             + Category 🗂
           </Button>
           <Button variant="light" onClick={() => setAddTagModalOpen(true)}>
-            Tag a Case 🏷 
+            + Tag a Case 🏷 
           </Button>
           <Button variant="light" onClick={() => setAddCaseModalOpen(true)}>
             + Case 🧳
           </Button>
           <Button variant="light" onClick={() => setDeleteCaseModalOpen(true)}>
-            ⓧ Case 🗑
+          🆇 Case 🗑
           </Button>
         </ButtonGroup>
         {/* <Button variant="dark" onClick={() => "redirect"}>

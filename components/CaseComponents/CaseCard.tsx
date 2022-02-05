@@ -9,7 +9,7 @@ import {
   CardSubtitle,
   CardText,
 } from "reactstrap";
-import { Box } from "@material-ui/core";
+import { Box, MenuItem } from "@material-ui/core";
 import { useMutation, useQuery } from "urql";
 import CloseIcon from "@material-ui/icons/Close";
 import DeleteCaseModal from "./Modals/DeleteCaseModal";
@@ -64,7 +64,7 @@ const CaseCard: React.FC<CaseCardProps> = (props) => {
               <CardTitle className="padding" tag="h3">{caseData.name}</CardTitle>
               <h5
               onClick={() => setDeleteCaseModalOpen(true)}>
-                ⓧ
+                🆇
               </h5>
             </Box>
             <CardSubtitle tag="h5" className="mb-2 text-muted">
@@ -76,15 +76,11 @@ const CaseCard: React.FC<CaseCardProps> = (props) => {
             Use the data on tags found in props to render out all
             of the tags associated with every case.
             */}
-            {/* {TagData ? (
-              <h3 className="font-weight-normal t4sg-color text-center">
-                {TagData.name}
-              </h3>
-            ) : (
-              <h3 className="font-weight-normal t4sg-color text-center">
-                Something went wrong
-              </h3>
-            )} */}
+            {/* {caseData
+                ? caseData.data.map((category: ManagementCategory, index: number) => {
+              return <MenuItem key={index} value={category.id}> {caseData.cases_tags.name} </MenuItem>;
+              })
+              : "Something went wrong"} */}
             {/* END TODO */}
           </Card>
         </div>

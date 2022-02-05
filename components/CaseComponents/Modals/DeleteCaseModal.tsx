@@ -42,11 +42,11 @@ type DeleteCaseModalProps = {
   Created a mutation that takes id number as input and deletes corresponding case
 */} 
 const DeleteCaseMutation = `
-mutation DeleteCaseMutation($id: bigint!) {
-  delete_cases(where: {id: {_eq: $id}}){
+mutation DeleteOneCaseMutation($id: bigint = "") {
+  delete_cases_by_pk(id: $id) {
+    id
   }
 }
-}  
 `;
 
 
@@ -91,7 +91,8 @@ const DeleteCaseModal: React.FC<DeleteCaseModalProps> = (props) => {
       <Box mt="10px" display="flex" justifyContent="center">
         <Button
           variant="outlined"
-          onClick={() => {executeMutation({id});
+          onClick={() => {
+            executeMutation({id});
             props.onClose();
           }}
         >

@@ -27,6 +27,12 @@ const CategoryQuery = `
         status
         description
         id
+        cases_tags {
+          tag {
+            name
+            id
+          }
+        }
       }
     }
 }
