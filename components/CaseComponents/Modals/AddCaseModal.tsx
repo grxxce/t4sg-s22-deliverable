@@ -70,7 +70,7 @@ const AddCaseModal: React.FC<AddCaseModalProps> = (props) => {
   return (
     <StyledModal open={props.open} onClose={props.onClose}>
       <Typography variant="h4" align="center">
-        Add New Case
+        Add New Case 🧳
       </Typography>
       <Box>
         <TextField
@@ -149,7 +149,7 @@ const AddCaseModal: React.FC<AddCaseModalProps> = (props) => {
       </Box>
       <Box mt="10px" display="flex" justifyContent="center">
         <Button
-          variant="outlined"
+          variant="text"
           onClick={() => {
             executeMutation({
               description,
@@ -160,7 +160,7 @@ const AddCaseModal: React.FC<AddCaseModalProps> = (props) => {
             props.onClose();
           }}
         >
-          Submit
+          Add ✅
         </Button>
       </Box>
     </StyledModal>

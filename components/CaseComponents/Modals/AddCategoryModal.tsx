@@ -55,7 +55,7 @@ const AddCategoryModal: React.FC<AddCaseModalProps> = (props) => {
   return (
     <StyledModal open={props.open} onClose={props.onClose}>
       <Typography variant="h4" align="center">
-        Add New Category
+        Add New Category 🗂
       </Typography>
       <Box>
         <TextField
@@ -98,7 +98,7 @@ const AddCategoryModal: React.FC<AddCaseModalProps> = (props) => {
             props.onClose();
           }}
         >
-          Submit
+          Add ✅
         </Button>
       </Box>
     </StyledModal>

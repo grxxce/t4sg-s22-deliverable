@@ -61,7 +61,7 @@ const DeleteCaseModal: React.FC<DeleteCaseModalProps> = (props) => {
   return (
     <StyledModal open={props.open} onClose={props.onClose}>
       <Typography variant="h4" align="center">
-        Delete Case
+        Delete Case 🗑
       </Typography>
       <Box>
         {data ? (
@@ -96,7 +96,7 @@ const DeleteCaseModal: React.FC<DeleteCaseModalProps> = (props) => {
             props.onClose();
           }}
         >
-          Submit
+          Delete 🆇
         </Button>
       </Box>
     </StyledModal>
