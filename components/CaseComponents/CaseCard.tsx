@@ -56,15 +56,16 @@ const CaseCard: React.FC<CaseCardProps> = (props) => {
           <Card body style={{ backgroundColor: "#e4ebf5" }}>
             <Box
               display="flex"
-              justifyContent="center"
+              justifyContent="space-between"
               alignItems="center"
               width="100%"
             >
               {/* Additional feature: delete with x */}
-              <CardTitle tag="h3">{caseData.name}</CardTitle>
-              <Button onClick={() => setDeleteCaseModalOpen(true)}>
-                ❌
-              </Button>
+              <CardTitle className="padding" tag="h3">{caseData.name}</CardTitle>
+              <h5
+              onClick={() => setDeleteCaseModalOpen(true)}>
+                ⓧ
+              </h5>
             </Box>
             <CardSubtitle tag="h5" className="mb-2 text-muted">
               ⏳ {caseData.status}

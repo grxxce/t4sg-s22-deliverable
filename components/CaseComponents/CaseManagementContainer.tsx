@@ -95,17 +95,17 @@ const CaseManagementContainer: React.FC = (props) => {
         }}
       >
         <ButtonGroup size="large" variant="outline">
-          <Button variant="contained" onClick={() => setAddCategoryModalOpen(true)}>
+          <Button variant="light" onClick={() => setAddCategoryModalOpen(true)}>
             + Category 🗂
           </Button>
-          <Button variant="contained" onClick={() => setAddTagModalOpen(true)}>
+          <Button variant="light" onClick={() => setAddTagModalOpen(true)}>
             Tag a Case 🏷 
           </Button>
-          <Button variant="contained" onClick={() => setAddCaseModalOpen(true)}>
+          <Button variant="light" onClick={() => setAddCaseModalOpen(true)}>
             + Case 🧳
           </Button>
-          <Button variant="contained" onClick={() => setDeleteCaseModalOpen(true)}>
-            ❌ Case
+          <Button variant="light" onClick={() => setDeleteCaseModalOpen(true)}>
+            ⓧ Case 🗑
           </Button>
         </ButtonGroup>
         {/* <Button variant="dark" onClick={() => "redirect"}>
