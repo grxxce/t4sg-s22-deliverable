@@ -3,7 +3,7 @@ import CaseManagementContainer from "../components/CaseComponents/CaseManagement
 
 const Index = () => {
   return (
-    <Layout pageTitle="T4SG Tech Challenge">
+    <Layout pageTitle="T4SG Case Tracker">
       <CaseManagementContainer />
     </Layout>
   );
